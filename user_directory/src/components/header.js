@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+
 import { Jumbotron, Row, Col, Container } from 'reactstrap'
 
 export default function Header(props) {

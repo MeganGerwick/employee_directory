@@ -19,8 +19,8 @@ class Table extends React.Component {
     componentDidMount() {
         API.employeeAPI().then((res) => {
             console.log(res);
-            this.setState({ resluts: res.data.results });
-            console.log(this.state.results);
+            this.setState({ results: res.data.results });
+            // console.log(this.state.results);
         })
             .catch((err) => console.log(err));
     }
@@ -33,7 +33,7 @@ class Table extends React.Component {
                 return 1;
             }
             return 0;
-        });
+        })
 
         if (this.state.sortList === "DESCENDING") {
             sortEmployee.reverse();
@@ -41,7 +41,7 @@ class Table extends React.Component {
         } else {
             this.setState({ sortList: "DESCENDING" });
         }
-        this.setState({ results: sortEmployees });
+        this.setState({ results: sortEmployee });
     };
 
     render() {
@@ -69,12 +69,12 @@ class Table extends React.Component {
                                     <tbody key={item.login.uuid}>
                                         <tr>
                                             <td>
-                                                <img src={item.picture.thumbnail} alt="profile picture" />
+                                                <img src={item.picture.thumbnail} alt="thumbnail" />
                                             </td>
                                             <td>{item.name.first}</td>
                                             <td>{item.name.last}</td>
-                                            <td>{item.name.email}</td>
-                                            <td>{item.name.phone}</td>
+                                            <td>{item.email}</td>
+                                            <td>{item.phone}</td>
                                         </tr>
                                     </tbody>
                                 ) :
@@ -82,12 +82,12 @@ class Table extends React.Component {
                                         <tbody key={item.login.uuid}>
                                             <tr>
                                                 <td>
-                                                    <img src={item.picture.thumbnail} alt="profile picture" />
+                                                    <img src={item.picture.thumbnail} alt="thumbnail" />
                                                 </td>
                                                 <td>{item.name.first}</td>
                                                 <td>{item.name.last}</td>
-                                                <td>{item.name.email}</td>
-                                                <td>{item.name.phone}</td>
+                                                <td>{item.email}</td>
+                                                <td>{item.phone}</td>
                                             </tr>
                                         </tbody>
                                     ) : null
@@ -98,3 +98,4 @@ class Table extends React.Component {
         );
     }
 }
+export default Table;
